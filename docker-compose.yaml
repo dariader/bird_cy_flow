@@ -1,0 +1,7 @@
+# unzip historical_bird_data
+# run terraform init, terraform apply -auto-approve to load data to GCS
+# myself -- run dbt
+# create network
+# run prefect find_new_bird_data
+# every 4 hours launch dbt to check data quality and upload data to GBQ
+# launch web-instance to show report (make a prompt to enter URL?)

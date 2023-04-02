@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="page.html" method="post">
+      <label>Report URL:
+        <input type="text" id="report_url" value="" />
+      </label>
+    </form>
+    <iframe id="report_frame" width="1000" height="600" src="" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <script>
+     document.getElementById("report_frame").src=document.getElementById("report_url").value;
+    </script>
+</body>
+</html>
