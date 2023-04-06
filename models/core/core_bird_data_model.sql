@@ -9,5 +9,5 @@ historical_data as (
     from {{ ref('stg_historical_dbt_model') }}
 )
 select * from realtime_data,
-full outer join historical_data
+outer join historical_data
 on historical_data.custom_primary_key = realtime_data.custom_primary_key;
