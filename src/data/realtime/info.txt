@@ -1,0 +1,20 @@
+Data columns (total 14 columns):
+ #   Column           Non-Null Count  Dtype
+---  ------           --------------  -----
+ 0   speciesCode      156 non-null    object
+ 1 +  comName          156 non-null    object
+ 2 + sciName          156 non-null    object -- foreign key for the table with scientific names etc
+ 3   locId            156 non-null    object
+ 4   locName          156 non-null    object
+ 5 +  obsDt            156 non-null    object
+ 6 +  lat              156 non-null    float64
+ 7   lng              156 non-null    float64
+ 8   obsValid         156 non-null    bool
+ 9   obsReviewed      156 non-null    bool
+ 10  locationPrivate  156 non-null    bool
+ 11  subId            156 non-null    object
+ 12  howMany          146 non-null    float64
+ 13  exoticCategory   2 non-null      object
+dtypes: bool(3), float64(3), object(8)
+memory usage: 14.0+ KB
+None

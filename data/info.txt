@@ -1,0 +1,58 @@
+Data columns (total 50 columns):
+ #   Column                            Non-Null Count  Dtype
+---  ------                            --------------  -----
+ 0   gbifID      +                      10 non-null     int64
+ 1   datasetKey                        10 non-null     object
+ 2   occurrenceID +                     10 non-null     object
+ 3   kingdom                           10 non-null     object
+ 4   phylum                            10 non-null     object
+ 5   class                             10 non-null     object
+ 6   order      +                       10 non-null     object
+ 7   family     +                       10 non-null     object
+ 8   genus       +                      10 non-null     object
+ 9   species   +                        10 non-null     object
+ 10  infraspecificEpithet              0 non-null      float64
+ 11  taxonRank                         10 non-null     object
+ 12  scientificName +                    10 non-null     object
+ 13  verbatimScientificName            10 non-null     object
+ 14  verbatimScientificNameAuthorship  0 non-null      float64
+ 15  countryCode                       10 non-null     object
+ 16  locality                          10 non-null     object
+ 17  stateProvince                     10 non-null     object
+ 18  occurrenceStatus                  10 non-null     object
+ 19  individualCount                   10 non-null     int64
+ 20  publishingOrgKey                  10 non-null     object
+ 21  decimalLatitude +                   10 non-null     float64
+ 22  decimalLongitude  +                 10 non-null     float64
+ 23  coordinateUncertaintyInMeters     0 non-null      float64
+ 24  coordinatePrecision               0 non-null      float64
+ 25  elevation                         0 non-null      float64
+ 26  elevationAccuracy                 0 non-null      float64
+ 27  depth                             0 non-null      float64
+ 28  depthAccuracy                     0 non-null      float64
+ 29  eventDate                         10 non-null     object
+ 30  day                +               10 non-null     int64
+ 31  month               +              10 non-null     int64
+ 32  year                 +             10 non-null     int64
+ 33  taxonKey                          10 non-null     int64
+ 34  speciesKey                        10 non-null     int64
+ 35  basisOfRecord                     10 non-null     object
+ 36  institutionCode                   10 non-null     object
+ 37  collectionCode                    10 non-null     object
+ 38  catalogNumber                     10 non-null     object
+ 39  recordNumber                      0 non-null      float64
+ 40  identifiedBy                      0 non-null      float64
+ 41  dateIdentified                    0 non-null      float64
+ 42  license                           10 non-null     object
+ 43  rightsHolder                      0 non-null      float64
+ 44  recordedBy                        10 non-null     object
+ 45  typeStatus                        0 non-null      float64
+ 46  establishmentMeans                0 non-null      float64
+ 47  lastInterpreted                   10 non-null     object
+ 48  mediaType                         0 non-null      float64
+ 49  issue                             0 non-null      float64
+dtypes: float64(18), int64(7), object(25)
+memory usage: 4.0+ KB
+None
+
+Process finished with exit code 0

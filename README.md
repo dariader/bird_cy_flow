@@ -1,4 +1,8 @@
-Dependencies: 
+An app to view the location of birds on Cyprus
+
+https://dariader.github.io/bird_cy_flow/
+
+Dependencies:
 
 1. Prefect
 2. DBT
