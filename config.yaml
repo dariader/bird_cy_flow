@@ -1,0 +1,32 @@
+#### Credentials
+credentials:
+  gcp_creds_file: "///creds.json"
+  dbt_gbq_creds_file: "///creds.json"
+  gbif_creds: ""
+  ebird_api_key: ""
+  gbif_passw: ""
+  gbif_user: ""
+
+#### folders
+folders:
+  realtime_data_folder: ""
+  historical_data_folder: ""
+
+
+#### GCP project names:
+# how to pair terraform and yaml?
+gcp_project:
+  title: birdflow
+  gbq_dataset_raw: raw_bird_data
+  gbq_dataset_processed: processed_bird_data
+  project_region: US
+
+#### Schedules:
+schedule:
+  # how to pair bash and yaml?
+  new_data_retrieval: * 1 * * * *
+  dbt_deploy: * 1 * * * *
+
+#### Report url
+looker:
+  report_url: "http//asdf"
