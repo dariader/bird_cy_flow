@@ -8,7 +8,7 @@ with realtime_source as (
      sciName as scientific_name,
       lat,
        lng,
-        cast(custom_primary_key as string) as custom_primary_key
+        cast(custom_primary_key as string) as custom_primary_key,
         obsDt as observation_date,
         date_trunc(observation_date, year) as year,
         date_trunc(observation_date, year) as month,
