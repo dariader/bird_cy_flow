@@ -1,5 +1,12 @@
-
 version: 2
+
+sources:
+    - name: bird_data_test
+      #For bigquery:
+      database: birdflow
+      tables:
+        - name: realtime_data
+        - name: historical_data
 
 models:
     - name: my_first_dbt_model
