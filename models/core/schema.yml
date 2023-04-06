@@ -1,7 +1,4 @@
 
 version: 2
-
-sources:
-    - name: bird_data_test
-      #For bigquery:
-      database: birdflow
+models:
+  -name: core_bird_data_model
