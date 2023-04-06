@@ -10,6 +10,9 @@
         <input type="text" id="report_url" value="" />
       </label>
     </form>
-    <iframe id="report_frame" width="1000" height="600" src="https://lookerstudio.google.com/embed/reporting/91a69e36-f0d2-49af-a017-764f430ed316/page/rNtLD" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <iframe id="report_frame" width="1000" height="600" src="" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <script>
+     document.getElementById("report_frame").src=document.getElementById("report_url").value;
+    </script>
 </body>
 </html>
