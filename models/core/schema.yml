@@ -1,4 +1,4 @@
 
 version: 2
 models:
-  -name: core_bird_data_model
+  - name: core_bird_data_model
