@@ -8,6 +8,6 @@ historical_data as (
     select *,
     from {{ ref('stg_historical_dbt_model') }}
 )
-select * from realtime_data,
+select * from realtime_data
 left join historical_data
 on historical_data.custom_primary_key = realtime_data.custom_primary_key;
