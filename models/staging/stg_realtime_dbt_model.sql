@@ -9,8 +9,8 @@ with realtime_source as (
       lat,
        lng,
         cast(custom_primary_key as string) as custom_primary_key,
-        obsDt as observation_date,
-        date_trunc(year, obsDt) as year,
-        date_trunc(month, obsDt) as month,
+        cast(obsDt as timestamp) as observation_date,
+        date_trunc(cast(obsDt as timestamp), year) as year,
+        date_trunc(cast(obsDt as timestamp), month) as month,
         from {{source("bird_data_test", "realtime_data")}}
 ) select * from realtime_source limit 151
