@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+    - name: bird_data_test
+      #For bigquery:
+      database: birdflow
+      tables:
+        - name: realtime_data
+        - name: historical_data
+
+
+models:
+    - name: stg_historical_dbt_model
+      description: "Staging model for historical data"
+      columns:
+          - name: custom_primary_key
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_realtime_dbt_model
+      description: "Staging model for realtime data"
+      columns:
+          - name: custom_primary_key
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null

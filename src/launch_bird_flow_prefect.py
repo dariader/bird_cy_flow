@@ -19,12 +19,17 @@ def search_for_new_data():
     logger = get_run_logger()
     """This task will load data from ebird, last 1 day"""
     query = retrieve_data(2)
+
     if len(query) < 1:
         logger.info('No new data')
     else:
         logger.info('New data!')
+        logger.info(f'Data size is {len(query)}')
         df = pd.DataFrame(query)
-        filename = f"{os.getcwd()}/data/realtime/{datetime.now()}.parquet"# folders are not created by themselves
+        time_now = datetime.now()
+        df['loading_date'] = time_now
+        df['custom_primary_key'] = df.apply(lambda x: hash(tuple(x)), axis=1)
+        filename = f"{os.getcwd()}/data/realtime/{time_now}.parquet"# folders are not created by themselves
         logger.info(filename)
         df.to_parquet(filename)
         return filename, df
