@@ -9,8 +9,8 @@ with realtime_source as (
       lat,
        lng,
         cast(custom_primary_key as string) as custom_primary_key,
-        cast(obsDt as timestamp) as observation_date,
-        DATETIME_TRUNC(obsDt, year) as year,
-        DATETIME_TRUNC(obsDt, month) as month,
+        cast(obsDt as datetime) as observation_date, -- 2023-04-04 13:00
+        FORMAT_DATETIME('%Y', cast(obsDt as datetime format "YYYY-MM-DD HH24:MI")) as year,
+        FORMAT_DATETIME('%m', cast(obsDt as datetime format "YYYY-MM-DD HH24:MI")) as month,
         from {{source("bird_data_test", "realtime_data")}}
 ) select * from realtime_source limit 151
