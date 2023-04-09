@@ -8,8 +8,8 @@ with historical_source as (
        decimalLatitude as lat,
         decimalLongitude as lng,
          catalogNumber as custom_primary_key,
-         cast(year, timestamp) as year,
-         cast(month, timestamp) as month,
+         PARSE_DATE('%Y', CAST(year AS STRING)) as year,
+         PARSE_DATE('%m', CAST(month AS STRING)) as month,
      row_number() over(partition by genus, year) as rn
      from {{source("bird_data_test", "historical_data")}}
      where taxonRank='SPECIES')
