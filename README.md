@@ -15,7 +15,7 @@ or through `issues` on GitHub
 2. DBT(Cloud)
 3. Python 3.10
 4. GCS, GBQ access
-
+5. Ebird db access
 
 Run:
 `pip install -r /src/requirements.txt`
