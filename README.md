@@ -4,7 +4,10 @@ An app to view the location of birds on Cyprus
 Service web page: 
 https://dariader.github.io/bird_cy_flow/
 
-### Disclaimer
+### Contact
+email : dary.spb@gmail.com
+tg: Dary_der
+or through `issues` on GitHub
 
 ### Dependencies:
 
@@ -110,3 +113,10 @@ choose environment, set as trigger -- schedule, run each day at 12 (cron: 0 12 *
 2) Go to Settings --> Pages
 3) Set up branch for deploy
 4) You will see resulting url of the web-page with embedded report
+
+
+
+## Known bugs to be fixed
+1) Docker image is not yet working
+2) Prefect flows should be scheduled solely by Prefect, and not cron. Or I will change Prefect to AirFlow. 
+3) Lost data from december'22 - april'23
