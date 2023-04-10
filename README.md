@@ -1,7 +1,10 @@
 # BirdFlow
 An app to view the location of birds on Cyprus
 
+Service web page: 
 https://dariader.github.io/bird_cy_flow/
+
+### Disclaimer
 
 ### Dependencies:
 
@@ -9,6 +12,8 @@ https://dariader.github.io/bird_cy_flow/
 2. DBT(Cloud)
 3. Python 3.10
 4. GCS, GBQ access
+
+
 Run:
 `pip install -r /src/requirements.txt`
 
@@ -51,16 +56,14 @@ To be able to source data from ebird, you need to
 1. create workspace and project, put names into config.yaml AND variables.tf
 ```Config yaml
 gcp_project:
-  title: birdflow
-  bucket_name: dtc_data_lake_us_birdflow
-  gbq_dataset_raw: raw_bird_data
-  gbq_dataset_processed: processed_bird_data
+  title: birdflow << change this
+  bucket_name: dtc_data_lake_us_birdflow << change this
 ```
 ```Terraform
 locals {
   data_lake_bucket = "dtc_data_lake_us" # GCS bucket name
-  project = "birdflow" # project name
-  historical_bird_file = "./data/0163061-220831081235567.csv" # location of historical data
+  project = "birdflow" # project name << change this
+  historical_bird_file = "./data/0163061-220831081235567.csv" # location of historical data << change this
   historical_data_name = "historical_bird_data" # DO NOT CHANGE
   gcs_bucket = "${local.data_lake_bucket}_${local.project}"  # DO NOT CHANGE
 }
@@ -87,3 +90,23 @@ in the prompt of `crontab -e` command
 ### Cron job monitoring
 run
 `prefect orion start`
+
+### Set up DBT schedule:
+1) login to DBT cloud, create project, clone this repo
+2) In Environment tab:
+create environment, set BQ dataset name
+3) in Create Jobs tab:
+choose environment, set as trigger -- schedule, run each day at 12 (cron: 0 12 * * *). 
+
+### Set up Looker:
+1) Login to looker
+2) Connect to database
+3) Create plots
+4) Select 'Sharing' --> embed report --> embed URL
+5) Insert URL into index.html `iframe` `src` attribute
+
+### Set up Github io
+1) Login to github
+2) Go to Settings --> Pages
+3) Set up branch for deploy
+4) You will see resulting url of the web-page with embedded report

@@ -1,1 +1,1 @@
-* 0 12 * * root python3 src/launch_bird_flow_prefect.py
+0 12 * * * root python3 src/launch_bird_flow_prefect.py
