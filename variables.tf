@@ -3,6 +3,7 @@ locals {
   project = "birdflow"
   historical_bird_file = "./data/0163061-220831081235567.csv"
   gcs_bucket = "${local.data_lake_bucket}_${local.project}"
+  historical_data_name = "historical_bird_data"
 }
 
 variable "region" {

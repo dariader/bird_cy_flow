@@ -3,10 +3,11 @@ This script will find and download new bird observation data from ebif API
 """
 
 from ebird.api import get_observations
+from config import Config
 import os
 
 
-api_key = os.getenv("EBIRD_API_KEY")
+api_key = Config('../../config.yaml').credentials.get('ebird_api_key', KeyError)
 
 def retrieve_data(last_n_days, location_code="CY"):
     """

@@ -4,16 +4,20 @@ will populate GCS with new data
 """
 import os
 
-
 import pandas as pd
 from datetime import datetime, timedelta
 from prefect import task, Flow, get_run_logger
 from prefect_gcp import GcsBucket
 from prefect import flow
+
+from src.utils.config import Config
 from utils.connect_gcp import connect_to_gcp
 from utils.find_new_bird_data import retrieve_data
 
-
+GCP_CREDENTIALS = Config('../../config.yaml').credentials.get('gcp_creds_file', KeyError)
+PROJECT_NAME = Config('../../config.yaml').gcp_project.get('title', KeyError)
+GCS_BUCKET_NAME = Config('../../config.yaml').gcp_project.get('bucket_name', KeyError)
+GBQ_DATASET_NAME = Config('../../config.yaml').gcp_project.get('gbq_dataset_raw', KeyError)
 @task()
 def search_for_new_data():
     logger = get_run_logger()
@@ -29,55 +33,43 @@ def search_for_new_data():
         time_now = datetime.now()
         df['loading_date'] = time_now
         df['custom_primary_key'] = df.apply(lambda x: hash(tuple(x)), axis=1)
-        filename = f"{os.getcwd()}/data/realtime/{time_now}.parquet"# folders are not created by themselves
+        path = f"{os.getcwd()}/data/realtime"
+        os.makedirs(path, exist_ok=True)
+        filename = f"{path}/{time_now}.parquet"  # folders are created automatically
         logger.info(filename)
         df.to_parquet(filename)
         return filename, df
 
 
 @task()
-def load_new_data(file_path):
-    """This will load data to GCS and GBQ"""
-    logger = get_run_logger()
-    #creds = os.getenv('BIRDFLOW_GOOGLE_KEY')
-    creds = "/home/daria/Downloads/birdflow-5be52b02fe39.json"
-    logger.info(creds)
-    gcp_credentials_block, bigquery_client = connect_to_gcp(creds)
-    gcs_bucket = GcsBucket(
-        bucket="dtc_data_lake_us_birdflow",
-        gcp_credentials=gcp_credentials_block
-    )
-    gcs_bucket_path = gcs_bucket.upload_from_path(file_path)
-
-@task()
 def load_new_data_GCS(file_path):
     """This will load new data to GCS folder"""
     logger = get_run_logger()
-    #creds = os.getenv('BIRDFLOW_GOOGLE_KEY')
-    creds = "/home/daria/Downloads/birdflow-5be52b02fe39.json"
-    logger.info(creds)
-    gcp_credentials_block, bigquery_client = connect_to_gcp(creds)
+    gcp_credentials_block, bigquery_client = connect_to_gcp(GCP_CREDENTIALS)
+    logger.info('Connecting to GCS')
     gcs_bucket = GcsBucket(
-        bucket="dtc_data_lake_us_birdflow",
+        bucket=GCS_BUCKET_NAME,
         gcp_credentials=gcp_credentials_block
     )
+    logger.info('Loading new data to GCS')
     gcs_bucket.upload_from_path(file_path)
+
 
 @task()
 def load_new_data_GBQ(dataframe):
     """This will load new data to GBQ table"""
     logger = get_run_logger()
-    #creds = os.getenv('BIRDFLOW_GOOGLE_KEY')
-    creds = "/home/daria/Downloads/birdflow-5be52b02fe39.json"
-    logger.info(creds)
-    gcp_credentials_block, bigquery_client = connect_to_gcp(creds)
+    logger.info('Connecting to GBQ')
+    gcp_credentials_block, bigquery_client = connect_to_gcp(GCP_CREDENTIALS)
+    logger.info('Loading new data to GBQ')
     dataframe.to_gbq(
-        destination_table="bird_data_test.realtime_data",
-        project_id="birdflow",
+        destination_table=f"{GBQ_DATASET_NAME}.realtime_data",
+        project_id=PROJECT_NAME,
         credentials=gcp_credentials_block.get_credentials_from_service_account(),
         chunksize=500_000,
-        if_exists="append",
+        if_exists="append"
     )
+
 
 @flow()
 def prefect_flow():

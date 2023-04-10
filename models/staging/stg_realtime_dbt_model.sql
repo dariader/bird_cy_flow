@@ -12,5 +12,5 @@ with realtime_source as (
         cast(obsDt as datetime) as observation_date, -- 2023-04-04 13:00
         FORMAT_DATETIME('%Y', cast(obsDt as datetime format "YYYY-MM-DD HH24:MI")) as year,
         FORMAT_DATETIME('%m', cast(obsDt as datetime format "YYYY-MM-DD HH24:MI")) as month,
-        from {{source("bird_data_test", "realtime_data")}}
+        from {{source("raw_bird_data", "realtime_data")}}
 ) select * from realtime_source limit 151

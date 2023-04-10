@@ -52,7 +52,7 @@ resource "google_bigquery_dataset" "dataset" {
 # to the storage bucket
 
 resource "google_storage_bucket_object" "default" {
- name         = "historical_bird_data"
+ name         = local.historical_data_name
  source       = local.historical_bird_file
  content_type = "text/plain"
  bucket       = local.gcs_bucket
