@@ -16,7 +16,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
-      - name: Get info about env
-        run: ls src/
+      - name: install dependencies
+        run: pip install -r src/requirements.txt
+      - name: update bird data 
+        run: python3 src/launch_bird_flow_prefect.py
   
       
