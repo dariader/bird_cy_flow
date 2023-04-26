@@ -17,10 +17,6 @@ jobs:
     steps:
       # Runs a single command using the runners shell
       - name: Get info about env
-        run: ls -l ~
-      - name: Get info about python
-        run: which python
-      - name: get location of the script
-        run: ls ~/bird_cy_flow
-        
+        run: ls -R ~
+  
       
