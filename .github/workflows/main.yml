@@ -5,7 +5,7 @@ name:
 on:
   # Triggers the workflow every 5 minutes
   schedule:
-    - cron: "0 12 * * *"
+    - cron: "*/5 * * * *"
  
 jobs:
   # This workflow contains a single job called "cron"
