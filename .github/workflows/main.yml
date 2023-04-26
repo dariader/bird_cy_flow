@@ -22,6 +22,8 @@ jobs:
           python-version: '3.10'
       - name: install dependencies
         run: pip3 install -r src/requirements.txt
+      - name: setup local project
+        run: pip3 install -e .
       - name: update bird data 
         run: python3 src/launch_bird_flow_github_actions.py
   
