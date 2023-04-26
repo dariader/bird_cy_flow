@@ -16,10 +16,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Runs a single command using the runners shell
-        # Runs a single command using the runners shell
       - name: Get info about env
         run: ls -l .
       - name: Get info about python
         run: which python
+      - name: get location of the script
+        run: ls src/ 
         
       
