@@ -18,7 +18,8 @@ jobs:
       # Runs a single command using the runners shell
         # Runs a single command using the runners shell
       - name: Get info about env
-        run: echo $(ls -l .)
-      - name: Run prefect workflow
-        run: python3 /home/runner/work/bird_cy_flow/src/launch_bird_flow_prefect.py
+        run: ls -l .
+      - name: Get info about python
+        run: which python
+        
       
