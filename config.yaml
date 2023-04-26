@@ -2,7 +2,7 @@
 credentials:
   gcp_creds_file: "/src/gcp_creds.json"
   gbif_creds: ""
-  ebird_api_key: "aopapml9tvuu"
+  ebird_api_key: "1234" # your API KEY
   gbif_passw: ""
   gbif_user: ""
 #### folders
