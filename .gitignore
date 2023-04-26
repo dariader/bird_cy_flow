@@ -5,3 +5,5 @@
 /data/0163061-220831081235567.csv
 /data/historical_bird_data.zip
 .terraform.lock.hcl
+/src/data/realtime/
+src/utils/__pycache__/

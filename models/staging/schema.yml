@@ -7,6 +7,10 @@ sources:
       tables:
         - name: realtime_data
         - name: historical_data
+    - name: bigquery-public-data
+      database: gbif
+      tables:
+        - name: occurrences
 
 
 models:

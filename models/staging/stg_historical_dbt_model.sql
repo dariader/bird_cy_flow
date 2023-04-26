@@ -2,7 +2,8 @@
 
 with historical_source as (
     -- add common name
-    select family,
+    select
+     family,
      genus,
       species as scientific_name,
        decimalLatitude as lat,

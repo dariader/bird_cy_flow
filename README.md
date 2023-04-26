@@ -3,13 +3,15 @@ An app to view the location of birds on Cyprus
 
 Service web page: 
 https://dariader.github.io/bird_cy_flow/
+### Disclaimer 
+All of the data used in the project belongs to GBIF.org and ebird.org
+
+1) ``` GBIF.org (13 November 2022) GBIF Occurrence Download https://doi.org/10.15468/dl.ghe39q ```
+
+2) ``` Fink, D., T. Auer, A. Johnston, M. Strimas-Mackey, S. Ligocki, O. Robinson, W. Hochachka, L. Jaromczyk, A. Rodewald, C. Wood, I. Davies, A. Spencer. 2022. eBird Status and Trends, Data Version: 2021; Released: 2022. Cornell Lab of Ornithology, Ithaca, New York. https://doi.org/10.2173/ebirdst.2021 ```
 
 ### Contact
-email : dary.spb@gmail.com
-
-tg: Dary_der
-
-or through `issues` on GitHub
+Through `issues` on GitHub
 
 ### Dependencies:
 
@@ -34,11 +36,11 @@ Steps:
 ## HOW TO RUN: 
 ### Get Data
 #### Archive data
-A) Must be retrieved from GBIF. They consolidate data for a large period (each several months). 
+Must be retrieved from GBIF. They consolidate data for a large period (each several months). 
 For that you need: 
 1) register in GBIF -- get password and username
-2) ask for permission to load data (cyprus data)
-3) download and put this data in ./data/ folder. See code for that in `/src/get_historical_data.sh`
+2) ask for permission to load data (cyprus bird observation data for desired period of time)
+3) download and put this data in `./data/` folder. See code for that in `/src/get_historical_data.sh`
 4) edit config.yaml file section: 
 
 ```commandline
@@ -46,11 +48,6 @@ For that you need:
 folders:
   historical_data_folder: "../data/<NAME>.csv"
 ```
-
-B) OR you request access to the data from myself (for my project reviewers only). 
-link to google drive: 
-https://drive.google.com/file/d/1Z0Tz1MQfz92sdxF6Pz1jz0050d14FxJF/view?usp=share_link
-
 #### Realtime data
 This data is retrieved from ebird servers, which are updated ~each hour. 
 To be able to source data from ebird, you need to 
