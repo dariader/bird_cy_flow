@@ -6,12 +6,13 @@ from ebird.api import get_observations
 from config import Config
 import os
 
-
 api_key = Config('../../config.yaml').credentials.get('ebird_api_key', KeyError)
 
-def retrieve_data(last_n_days, location_code="CY"):
+
+def retrieve_data(last_n_days, api_key=api_key, location_code="CY"):
     """
     Function to download new data from ebird db
+    :param api_key: string value of api key, by default retrieved from config
     :param last_n_days: how many days to load from ebird, max 30
     :param location_code: default: CY.
     :return: records in json

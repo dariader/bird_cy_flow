@@ -77,14 +77,18 @@ locals {
 
 ### Terraform 
 1. terraform will create GCS lake and upload historical observations file
+
 run: 
 ` terraform plan `
 ` terraform apply `
 
 ### Cron job
 Set as working directory the directory of the project.
+
 run:
+
 `/usr/bin/crontab /src/prefect_scheduler/schedule`
+
 This will launch cron job with the parameters in the `schedule` file
 
 or add the contents of `/src/prefect_scheduler/schedule`
