@@ -1,0 +1,20 @@
+name:
+  Update Bird Data
+ 
+  # Controls when the workflow will run
+on:
+  # Triggers the workflow every 5 minutes
+  schedule:
+    - cron: "0 12 * * *"
+ 
+jobs:
+  # This workflow contains a single job called "cron"
+  cron:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+ 
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Runs a single command using the runners shell
+      - name: Run prefect workflow
+        run: python3 src/launch_bird_flow_prefect.py
