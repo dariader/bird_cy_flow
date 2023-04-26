@@ -17,6 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Get info about env
-        run: ls /src/
+        run: ls src/
   
       
