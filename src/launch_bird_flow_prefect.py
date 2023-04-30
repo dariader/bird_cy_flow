@@ -10,7 +10,7 @@ from prefect import task, Flow, get_run_logger
 from prefect_gcp import GcsBucket
 from prefect import flow
 
-from src.utils.config import Config
+from utils.config import Config
 from utils.connect_gcp import connect_to_gcp
 from utils.find_new_bird_data import retrieve_data
 
